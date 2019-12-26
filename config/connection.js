@@ -26,6 +26,7 @@ connection.connect(function(err) { //before calling any other functions to query
     afterConnection();
 });
 
+//remove for deployment
 function afterConnection() {
     connection.query("SELECT * FROM burgers", function(err, res) {
         if (err) throw err;

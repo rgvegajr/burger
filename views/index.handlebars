@@ -1,0 +1,21 @@
+<!-- 1) setup template here for handlebars to render into 2) create button to submit inputs -->
+<h1>Burgers!</h1>
+
+<h2>Available Burgers!</h2>
+
+<ul>
+    {{#each burger}}
+        <!--display burgers along with a devour button -->
+        <!--  <button type="submit">Devour</button>  -->
+    {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="ca">Burger Name:</label>
+        <input type="text" id="ca" name="name">
+    </div>
+    <button type="submit">Add Burger</button>
+</form>

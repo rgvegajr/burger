@@ -1,6 +1,6 @@
-const connection = require("connection");
+const connection = require("./connection.js");
 
-module.exports orm = {
+const orm = {
 
     const selectAll = (burgers) => {
         //query db "select * from burgers;"
@@ -24,3 +24,5 @@ module.exports orm = {
 
 
 }
+
+module.exports = orm;
