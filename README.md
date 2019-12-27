@@ -7,7 +7,8 @@ To use on aws:
 4. IF db not already created: run mysql commands:  source schema.sql and seeds.sql
 5. ELSE run: USE burgers_db;
 6. exit mysql cli, run: exit;
-5. verify by running; node server.js
+7. change password for connection.js if required
+8. verify by running; node server.js
 
 if done correctly:
 

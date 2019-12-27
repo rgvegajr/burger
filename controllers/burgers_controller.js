@@ -31,30 +31,6 @@ router.post("/api/burgers", function(req, res) { //determine api route
     });
 });
 
-//ajax code to add a burger
-// $(".create-form").on("submit", function(event) {
-//     // Make sure to preventDefault on a submit event.
-//     event.preventDefault();
-
-//     let newBurger = {
-//         burger_name: $("#burger").val().trim(),
-//         devoured: $("#devoured").val().trim()
-//     };
-
-//     // Send the POST request.
-//     $.ajax("/api/burgers", {
-//         type: "POST",
-//         data: newBurger
-//     }).then(
-//         function() {
-//             console.log("created new burger");
-//             // Reload the page to get the updated list
-//             location.reload();
-//         }
-//     );
-// });
-
-
 //update burger database and display when devour button clicked
 router.put("/api/burger/:id", function(req, res) {
     const condition = "id = " + req.params.id;
@@ -67,35 +43,11 @@ router.put("/api/burger/:id", function(req, res) {
         if (result.changedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
-        } else {
+        }
+        else {
             res.status(200).end();
         }
     });
-
-    //ajax code to update devoured status
-    // $(".update-form").on("submit", function(event) {
-    //     // Make sure to preventDefault on a submit event.
-    //     event.preventDefault();
-
-    //     let updatedBurger = {
-    //         burger_name: $("#burger_name").val().trim(),
-    //         devoured: $("#devoured").val().trim()
-    //     };
-
-    //     let id = $(this).data("id");
-
-    //     // Send the POST request.
-    //     $.ajax("/api/burgers/" + id, {
-    //         type: "PUT",
-    //         data: updatedBurger
-    //     }).then(
-    //         function() {
-    //             console.log("burger devoured ");
-    //             // Reload the page to get the updated list
-    //             location.assign("/");
-    //         }
-    //     );
-    // });
 
 });
 

@@ -1,23 +1,23 @@
 const orm = require("../config/orm.js");
 
 const burger = {
-    selectAll: function(burgers) {
+    allBurgers: function(burgers) {
         orm.selectAll("burgers", function(res) {
-            burgers(res);
+            burger(res);
         });
     },
 
-    insertOne: function(burgers, burger_name) {
+    insertBurger: function(burgers, burger_name) {
         orm.insertOne("burgers", "burger_name", function(res) {
-            burgers(res);
+            burger(res);
         });
     },
-    updateOne: function(burgers, id) {
+    updateBurger: function(burgers, id) {
         orm.updateOne("burgers", "id", function(res) {
-            burgers(res);
+            burger(res);
         });
     }
 }
 
-//export the database functions for the controller
+//export the database functions for the burgers_controller
 module.exports = burger;
