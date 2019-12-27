@@ -1,15 +1,23 @@
-const orm = require("./orm.js");
+const orm = require("../config/orm.js");
 
+const burger = {
+    selectAll: function(burgers) {
+        orm.selectAll("burgers", function(res) {
+            burgers(res);
+        });
+    },
 
-
-const burgers = {
-
-    orm.selectAll("burgers");
-
-    orm.insertOne("burgers", "burger_name");
-
-    orm.updateOne("burgers", "id", "");
-
+    insertOne: function(burgers, burger_name) {
+        orm.insertOne("burgers", "burger_name", function(res) {
+            burgers(res);
+        });
+    },
+    updateOne: function(burgers, id) {
+        orm.updateOne("burgers", "id", function(res) {
+            burgers(res);
+        });
+    }
 }
 
-module.exports = burgers;
+//export the database functions for the controller
+module.exports = burger;
