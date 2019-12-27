@@ -20,24 +20,19 @@ router.get("/", function(req, res) {
 });
 
 //add burger to database and display when add button clicked
-router.post("/api/burgers", function(req, res) { //determine api route
-    burger.create([
-        "name", "devoured"
-    ], [
-        req.body.burger_name, req.body.devoured
-    ], function(result) {
+router.post("/", function(req, res) { //determine api route
+    console.log("post route");
+    burger.create("name", [req.body.burger_name], function(result) {
         // Send back the ID of the new burger
-        res.json({ id: result.insertId });
+    res.json({ id: result.insertId });//or newBurger object?  send back to front end
     });
 });
 
 //update burger database and display when devour button clicked
 router.put("/api/burger/:id", function(req, res) {
     const condition = "id = " + req.params.id;
-
     console.log("condition", condition);
-
-    burger.update({
+    burger.devour({
         devoured: req.body.devoured
     }, condition, function(result) {
         if (result.changedRows == 0) {

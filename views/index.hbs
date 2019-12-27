@@ -1,0 +1,22 @@
+<!-- 1) setup template here for handlebars to render into 2) create button to submit inputs -->
+<h1>Burgers App: A Digi-Gastronomy Experience!</h1>
+
+<h2>Available Burgers!</h2>
+
+<ul>
+    {{#each burgerObject}}
+        <!--display burgers along with a devour button -->
+        <p><span class="label">burger name:</span> {{this.burger_name}}</p>
+        <img src="{{this.photo}}" style="height: 200, width: 200">
+        <button data-name="{{this.burger_name}}" id="devourBurger" type="submit">Devour it NOW!</button>
+    {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form" action="" method="POST">
+    <div class="form-group">
+        <label for="burgername">Burger Name:</label>
+        <input type="text" id="newBurger" name="burger_name">
+    </div>
+    <button type="submit" id="addBurger">Add Burger</button>
+</form>

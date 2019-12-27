@@ -17,8 +17,11 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.engine(".hbs", exphbs({
+    extname: ".hbs",
+    defaultLayout: "main"
+}));
+app.set("view engine", ".hbs");
 
 app.use(routes);
 

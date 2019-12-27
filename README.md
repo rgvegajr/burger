@@ -40,3 +40,7 @@ connected as id 3
   references:
   catsappsolved
   ormexample
+
+  other:
+  body-parser no longer required w/latest version of express - see cats app
+  replacing handlebars by .hbs in server.js file per tutorial on youtube

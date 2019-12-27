@@ -1,0 +1,65 @@
+<!-- setup so this is useable by handlebars -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Eat Da Burger App!</title>
+	<link rel="stylesheet" href="/public/assets/css/burger_style.css" type="text/css" />
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+	<!--placeholder for main body html content -->
+	{{{ body }}}
+
+	<script type="text/javascript">
+		//ajax code to add a burger
+		$(function() {
+			$("#addBurger").on("submit", function(event) {
+				// Make sure to preventDefault on a submit event.
+				event.preventDefault();
+				let newBurger = $("#newBurger").val().trim();
+				// Send the POST request.
+				$.ajax("/", { //or $.post??
+					type: "POST",
+					data: newBurger
+				}).then(
+					function() {
+						console.log("created new burger");
+						// Reload the page to get the updated list
+						alert("New burger added!");
+						location.reload();
+					}
+				);
+				return false;
+			});
+
+			//    ajax code to update devoured status
+			$("#devourBurger").on("submit", function(event) {
+				// Make sure to preventDefault on a submit event.
+				event.preventDefault();
+				let devouredBurger = {
+					burger_name: $("#burger_name").val().trim(),
+					devoured: $("#devoured").val().trim()
+				};
+				let id = $(this).data("id");
+				// Send the POST request.
+				$.ajax("/" + id, {
+					type: "PUT",
+					data: updatedBurger
+				}).then(
+					function() {
+						console.log("burger devoured ");
+						// Reload the page to get the updated list
+						alert("You destroyed that burger!!");
+						location.assign("/"); //??
+					}
+				);
+				return false;
+			});
+		});
+	</script>
+</body>
+
+</html>
