@@ -4,7 +4,7 @@ const connection = mysql.createConnection({ //creatConnection function takes in 
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "",
+    password: "password1234",
     database: "burgers_db"
 });
 
@@ -13,7 +13,7 @@ connection.connect(function(err) { //before calling any other functions to query
     if (err) throw err;
     console.log(`connected as id ${connection.threadId}`);
     // connection.end(); //closes connection to db, critical to always do...or replace this with desired function and ensure this line is included at the end of the function
-    afterConnection();
+    // afterConnection();
 });
 
 //remove for deployment
@@ -22,7 +22,7 @@ function afterConnection() {
         if (err) throw err;
         console.log("afterConnection query response");
         console.log(res);
-        connection.end();
+        // connection.end();
     });
 }
 

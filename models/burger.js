@@ -1,20 +1,23 @@
 const orm = require("../config/orm.js");
 
 const burger = {
-    all: function(burgers) {
-        orm.selectAll("burgers", function(res) {
-            burger(res);
+    allBurgers: function(bdb) {
+        console.log("model function call: allBurgers");
+        // orm.allBurgers("burgers", function(result) {
+        orm.allBurgers(function(result) {
+            bdb(result);
         });
     },
-
-    create: function(burgers, burger_name) {
-        orm.insertOne("burgers", "burger_name", function(res) {
-            burger(res);
+    newBurger: function(burger_name, val, bdb) {
+        console.log("model function call: newBurger");
+        orm.newBurger(burger_name, val, function(result) {
+            bdb(result);
         });
     },
-    devour: function(burgers, id) {
-        orm.updateOne("burgers", "id", function(res) {
-            burger(res);
+    devourBurger: function(val, id, bdb) {
+        console.log("model function call: devourBurger");
+        orm.devourBurger(val, id, function(result) {
+            bdb(result);
         });
     }
 }

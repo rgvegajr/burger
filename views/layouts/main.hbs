@@ -1,15 +1,24 @@
 <!-- setup so this is useable by handlebars -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<title>Eat Da Burger App!</title>
-	<link rel="stylesheet" href="/public/assets/css/burger_style.css" type="text/css" />
-	<script src="https://code.jquery.com/jquery.js"></script>
+<meta charset="UTF-8">
+<title>Eat Da Burger App!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css"/>
+<script src="https://code.jquery.com/jquery.js"></script>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
 </head>
 
-<body>
+<body class="w3-amber">
 	<!--placeholder for main body html content -->
 	{{{ body }}}
 
@@ -21,45 +30,45 @@
 				event.preventDefault();
 				let newBurger = $("#newBurger").val().trim();
 				// Send the POST request.
+				console.log("newburger=" + newBurger);
+				alert("New burger about to be submitted!");
 				$.ajax("/", { //or $.post??
 					type: "POST",
 					data: newBurger
 				}).then(
 					function() {
+						location.reload();
 						console.log("created new burger");
 						// Reload the page to get the updated list
 						alert("New burger added!");
 						location.reload();
 					}
 				);
-				return false;
 			});
 
 			//    ajax code to update devoured status
-			$("#devourBurger").on("submit", function(event) {
+			$(".change-state").on("click", function(event) {
 				// Make sure to preventDefault on a submit event.
 				event.preventDefault();
-				let devouredBurger = {
-					burger_name: $("#burger_name").val().trim(),
-					devoured: $("#devoured").val().trim()
-				};
-				let id = $(this).data("id");
+			    let id = $(this).data("id");
+    			let newDevoured = $(this).data("devoured");
+    			let updatedState = {
+     				 devoured: newDevoured
+   				 };
 				// Send the POST request.
 				$.ajax("/" + id, {
 					type: "PUT",
-					data: updatedBurger
+					data: updatedState
 				}).then(
 					function() {
 						console.log("burger devoured ");
 						// Reload the page to get the updated list
 						alert("You destroyed that burger!!");
-						location.assign("/"); //??
+						location.reload(); //??
 					}
 				);
-				return false;
 			});
 		});
 	</script>
 </body>
-
 </html>
