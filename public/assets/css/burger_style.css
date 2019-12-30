@@ -9,3 +9,8 @@ button {
     font-weight: bold;
     font-style: italic;
 }
+
+.create-form {
+    border-color: black;
+    text-align: center;
+}

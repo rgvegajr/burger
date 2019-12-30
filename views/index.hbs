@@ -9,35 +9,36 @@
 
   <div class="w3-content">
     <div class="w3-third w3-center">
-          <h2>Available Burgers</h2>
-    {{#each burgers}}
+      <h2>Available Burgers</h2>
+      {{#each burgers}}
         {{#unless devoured}}
-        <p><span class="label"></span> {{this.burger_name}}</p>
-        {{!-- <img src="{{this.photo}}" style="height: 200, width: 200"> --}}
-        <button class="change-state" id="eatIt" data-id="{{id}}" data-newDevoured="{{this.devoured}}">Devour it NOW!</button>
+          <p><span class="label"></span> {{this.burger_name}}</p>
+          {{!-- <img src="{{this.photo}}" style="height: 200, width: 200"> --}}
+          <button class="change-state" id="eatIt" data-id="{{id}}" data-newDevoured="{{this.devoured}}">Devour it NOW!</button>
         {{/unless}}
-    {{/each}}
+      {{/each}}
     </div>
-        <div class="w3-third w3-center">
-          <h2>Devoured Burgers</h2>
-    {{#each burgers}}
-         {{#if devoured}}
-        <p><span class="label"></span> {{this.burger_name}}</p>
-        {{!-- <img src="{{this.photo}}" style="height: 200, width: 200"> --}}
-        <button class="change-state" id="makeIt" data-id="{{id}}" data-unDevoured="{{this.devoured}}">Make a new one!</button>
-        {{/if}}    
-        {{/each}}
+    <div class="w3-third w3-center">
+      <h2>Devoured Burgers</h2>
+      {{#each burgers}}
+        {{#if devoured}}
+          <p><span class="label"></span> {{this.burger_name}}</p>
+          {{!-- <img src="{{this.photo}}" style="height: 200, width: 200"> --}}
+          <button class="change-state" id="makeIt" data-id="{{id}}" data-unDevoured="{{this.devoured}}">Make a new one!</button>
+        {{/if}}
+      {{/each}}
     </div>
 
     <div class="w3-third w3-center">
-<h2>Add a Burger</h2>
-<form class="create-form" action="" method="POST">
-    <div class="form-group">
-        <label for="burgername">Burger Name:</label>
-        <input type="text" id="newBurger" name="burger_name">
-    </div>
-    <button type="submit" id="addBurger">Add Burger</button>
-</form>
+      <h2>Add a Burger</h2>
+      <form class="create-form">
+        <!-- could add here: action="/" method="POST">  this part not required because handled by ajax post parameters in js portion of main.hbs-->
+        <div class="form-group">
+          <label for="burgername">Burger Name:</label>
+          <input type="text" id="newBurger" name="burger_name">
+        </div>
+        <button type="submit" id="addBurger">Add Burger</button>
+      </form>
     </div>
   </div>
 </div>

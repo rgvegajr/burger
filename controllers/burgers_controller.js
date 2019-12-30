@@ -33,6 +33,7 @@ router.post("/", function(req, res) { //determine api route
             res.json({ id: result.insertId }); //or newBurger object?  send back to front end
             console.log("that was res.json");
         });
+    // res.redirect("/");  //testing since above action renders json object and hangs
 });
 
 //update burger database and display when devour button clicked
