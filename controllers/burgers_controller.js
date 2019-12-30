@@ -26,17 +26,18 @@ router.post("/", function(req, res) { //determine api route
     burger.newBurger(
         ["burger_name"], [req.body.burger_name],
         function(result) {
-            console.log("add burger form value: " + req.body.burger_name);
+            console.log("add burger form value: ");
+            console.log(req.body.burger_name);
             // Send back the ID of the new burger
-            // console.log("here comes res.json");
+            console.log("here comes res.json:");
             res.json({ id: result.insertId }); //or newBurger object?  send back to front end
-            // console.log("that was res.json");
+            console.log("that was res.json");
         });
 });
 
 //update burger database and display when devour button clicked
 router.put("/:id", function(req, res) {
-    console.log("devour (put) route");
+    console.log("devour (put) route for id: ");
     const id = "id = " + req.params.id;
     console.log(id);
     burger.devourBurger({
@@ -45,7 +46,8 @@ router.put("/:id", function(req, res) {
         if (result.changedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
-        } else {
+        }
+        else {
             res.status(200).end();
         }
     });

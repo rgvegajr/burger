@@ -52,7 +52,8 @@ const orm = {
         // queryString += burger_name;
         // queryString += printQuestionMarks(vals.length);  //see cat app for sql helper functions
         queryString += ");";
-        console.log("orm query string for new burger(insert)" + burger_name);
+        console.log("orm query string for new burger(insert)");
+        console.log(burger_name);
         console.log(queryString);
         connection.query(queryString, val, function(err, result) {
             if (err) {
@@ -76,7 +77,8 @@ const orm = {
         queryString += " WHERE ";
         queryString += id;
         queryString += ";";
-        console.log("orm query string for devour " + id);
+        console.log("orm query string for devour ");
+        console.log(id);
         console.log(queryString);
         connection.query(queryString, function(err, result) {
             if (err) {
