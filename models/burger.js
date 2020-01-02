@@ -10,6 +10,8 @@ const burger = {
     },
     newBurger: function(burger_name, val, bdb) {
         console.log("model function call: newBurger");
+        console.log(burger_name);
+        console.log(val);
         orm.newBurger(burger_name, val, function(result) {
             bdb(result);
         });

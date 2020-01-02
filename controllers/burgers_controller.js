@@ -23,6 +23,8 @@ router.get("/", function(req, res) {
 //add burger to database and display when add button clicked
 router.post("/", function(req, res) { //determine api route
     console.log("add a burger (post) route");
+    console.log("add burger form value: ");
+    console.log(req.body.burger_name + ", " + req.body.devoured);
     burger.newBurger(
         ["burger_name"], [req.body.burger_name],
         function(result) {
@@ -48,8 +50,7 @@ router.put("/:id", function(req, res) {
         if (result.changedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
-        }
-        else {
+        } else {
             res.status(200).end();
         }
     });

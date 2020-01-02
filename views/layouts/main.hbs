@@ -25,22 +25,21 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 	<script type="text/javascript">
 		//ajax code to add a burger
 		$(function() {
-			$("#addBurger").on("submit", function(event) {
+			$(".addBurger").on("submit", function(event) {
 				// Make sure to preventDefault on a submit event.
 				event.preventDefault();
-				let newBurger = $("#newBurger").val().trim();
+				let newBurger = {burger_name: $("#newBurger").val().trim(), devoured: 0};
 				// Send the POST request.
 				console.log("newburger=" + newBurger);
-				alert("New burger about to be submitted!");
+				//alert("New burger about to be submitted!");
 				$.ajax("/", { //or $.post??
 					type: "POST",
 					data: newBurger
 				}).then(
 					function() {
-						location.reload();
 						console.log("created new burger");
 						// Reload the page to get the updated list
-						alert("New burger added!");
+						//alert("New burger added!");
 						location.reload();
 					}
 				);
@@ -63,8 +62,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 					function() {
 						console.log("burger devoured ");
 						// Reload the page to get the updated list
-						alert("You destroyed that burger!!");
-						location.reload(); //??
+						//alert("You destroyed that burger!!");
+						location.reload();
 					}
 				);
 			});

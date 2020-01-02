@@ -48,14 +48,19 @@ const orm = {
         //query db "insert into burgers (name, devoured) values ("burger name", 0);
         //use response to generate html via handlebars files
         let queryString = "INSERT INTO burgers";
-        queryString += " (burger_name) VALUES (?";
-        // queryString += burger_name;
+        queryString += " (burger_name,devoured) VALUES ('";
+        queryString += val;
         // queryString += printQuestionMarks(vals.length);  //see cat app for sql helper functions
-        queryString += ");";
+        queryString += "',0);";
         console.log("orm query string for new burger(insert)");
         console.log(burger_name);
+        // console.log(objToSql(burger_name));
+        console.log(val);
+        // console.log(objToSql(val));
         console.log(queryString);
-        connection.query(queryString, val, function(err, result) {
+        connection.query(queryString, function(err, result) {
+
+            // connection.query(queryString, burger_name, function(err, result) {
             if (err) {
                 throw err;
             }
