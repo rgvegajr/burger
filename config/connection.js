@@ -1,13 +1,17 @@
 const mysql = require("mysql");
+let connection;
 
-const connection = mysql.createConnection({ //creatConnection function takes in object with host, port, un, pw, db name, etc
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "password1234",
-    database: "burgers_db"
-});
-
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({ //creatConnection function takes in object with host, port, un, pw, db name, etc
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "password1234",
+        database: "burgers_db"
+    });
+}
 //make connection to db
 connection.connect(function(err) { //before calling any other functions to query database, etc, must ensure a connection
     if (err) throw err;
@@ -17,13 +21,13 @@ connection.connect(function(err) { //before calling any other functions to query
 });
 
 //remove for deployment
-function afterConnection() {
-    connection.query("SELECT * FROM burgers", function(err, res) {
-        if (err) throw err;
-        console.log("afterConnection query response");
-        console.log(res);
-        // connection.end();
-    });
-}
+// function afterConnection() {
+//     connection.query("SELECT * FROM burgers", function(err, res) {
+//         if (err) throw err;
+//         console.log("afterConnection query response");
+//         console.log(res);
+//         // connection.end();
+//     });
+// }
 
 module.exports = connection;
