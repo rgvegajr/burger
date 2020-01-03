@@ -3,9 +3,6 @@ const router = express.Router();
 //import the burger.js model to use its database functions.
 const burger = require("../models/burger.js");
 
-//may need to include handlebars here
-
-
 //create all the routes required for the application.  below based on catsController.js file in cats app
 //display main page with burger database
 router.get("/", function(req, res) {
@@ -54,7 +51,6 @@ router.put("/:id", function(req, res) {
             res.status(200).end();
         }
     });
-
 });
 
 // Export routes for server.js to use.

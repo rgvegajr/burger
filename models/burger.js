@@ -3,7 +3,6 @@ const orm = require("../config/orm.js");
 const burger = {
     allBurgers: function(bdb) {
         console.log("model function call: allBurgers");
-        // orm.allBurgers("burgers", function(result) {
         orm.allBurgers(function(result) {
             bdb(result);
         });

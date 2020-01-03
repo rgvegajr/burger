@@ -1,19 +1,11 @@
-<!-- Header -->
-<header class="w3-container w3-red w3-center" style="padding:16px">
-  <h1 class="w3-margin w3-jumbo">Burgers App!</h1>
-  <h2 class="w3-xlarge"><em>A Digi-Gastronomy Experience!</em></h2>
-</header>
-
 <!-- First Grid -->
 <div class="w3-row-padding w3-padding-32 w3-container w3-amber">
-
   <div class="w3-content">
     <div class="w3-third w3-center">
       <h2>Available Burgers</h2>
       {{#each burgers}}
         {{#unless devoured}}
           <p><span class="label"></span> {{this.burger_name}}</p>
-          {{!-- <img src="{{this.photo}}" style="height: 200, width: 200"> --}}
           <button class="change-state" id="eatIt" data-id="{{id}}" data-newDevoured="{{this.devoured}}">Devour it NOW!</button>
         {{/unless}}
       {{/each}}
@@ -23,8 +15,8 @@
       {{#each burgers}}
         {{#if devoured}}
           <p><span class="label"></span> {{this.burger_name}}</p>
-          {{!-- <img src="{{this.photo}}" style="height: 200, width: 200"> --}}
-          <button class="change-state" id="makeIt" data-id="{{id}}" data-unDevoured="{{this.devoured}}">Make a new one!</button>
+          {{!-- //line below is starter code for future functionality --}}
+          {{!-- <button class="change-state" id="makeIt" data-id="{{id}}" data-unDevoured="{{this.devoured}}">Make a new one!</button> --}}
         {{/if}}
       {{/each}}
     </div>
@@ -33,9 +25,9 @@
       <h2>Add a Burger</h2>
       <form class="addBurger">
         <!-- could add here: action="/" method="POST">  this part not required because handled by ajax post parameters in js portion of main.hbs-->
-        <div class="form-group">
-          <label for="burgername">Burger Name:</label>
-          <input type="text" id="newBurger" name="name">
+        <div class="form-group" id="id01">
+          <input type="text" id="newBurger" name="name" placeholder="fill in burger name!" >
+          <br>
         </div>
         <button type="submit" id="addBurger">Add Burger</button>
       </form>

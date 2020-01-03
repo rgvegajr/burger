@@ -1,0 +1,9 @@
+To use on aws cloud9 ide:
+1. open terminal
+2. start mysql:  sudo service mysqld start && sudo service mysqld status
+3. start mysql cli: sudo mysql -uroot -p
+4. IF db not already created: run mysql commands:  source schema.sql and seeds.sql
+5. ELSE run: USE burgers_db;
+6. exit mysql cli, run: exit;
+7. change password for connection.js if required
+8. verify by running; node server.js
