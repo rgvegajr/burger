@@ -3,7 +3,7 @@
 
 This application is deployed on heroku at:
 
-* https://stormy-lowlands-10588.herokuapp.com/
+* https://pure-sea-39739.herokuapp.com/
 
 The github repository ca be found at: 
 
